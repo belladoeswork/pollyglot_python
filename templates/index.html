@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PollyGlot Translation</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>.recording { color: rgb(239, 68, 68); } .hidden { display: none; }</style>
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="max-w-3xl mx-auto shadow-lg bg-white rounded-lg">
+        <div class="p-6 space-y-1">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-bold flex items-center gap-2">
+                    <i data-lucide="languages" class="h-6 w-6 text-blue-500"></i>
+                    PollyGlot Translation
+                </h1>
+            </div>
+            <p class="text-sm text-gray-500">Translate to English from your chosen language</p>
+        </div>
+        
+        <div class="p-6 space-y-4">
+            <input type="file" id="fileInput" class="hidden" accept=".txt,.pdf,.doc,.docx">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <select id="languageSelect" class="w-full border rounded-md p-2">
+                    <option value="">Select language</option>
+                    <option value="fr">🇫🇷 French</option>
+                    <option value="de">🇩🇪 German</option>
+                    <option value="es">🇪🇸 Spanish</option>
+                </select>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-2">
+                    <label class="text-sm font-medium">Original Text</label>
+                    <div class="relative">
+                        <textarea id="inputText" placeholder="Enter text to translate..." 
+                                class="w-full min-h-[200px] resize-none border rounded-md p-2"></textarea>
+                        <button id="recordButton" class="absolute bottom-2 right-2 p-2">
+                            <i data-lucide="mic" class="h-4 w-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-sm font-medium">English Translation</label>
+                    <div class="relative">
+                        <textarea id="outputText" placeholder="Translation will appear here..." 
+                                class="w-full min-h-[200px] resize-none bg-gray-50 border rounded-md p-2" 
+                                readonly></textarea>
+                        <button id="muteButton" class="absolute bottom-2 right-2 p-2">
+                            <i data-lucide="volume-2" class="h-4 w-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2 justify-center pt-4">
+                <button id="uploadButton" class="w-40 flex items-center justify-center gap-2 px-4 py-2 border rounded-md">
+                    <i data-lucide="upload" class="h-4 w-4"></i>
+                    Upload File
+                </button>
+                <button id="translateButton" class="w-40 flex items-center justify-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                    <i data-lucide="send" class="h-4 w-4"></i>
+                    Translate
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>lucide.createIcons();</script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
